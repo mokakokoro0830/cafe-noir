@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Café Noir – Design Variations</title>
+<style>
+  body{font-family:-apple-system,'Hiragino Sans',sans-serif;background:#1a1410;color:#FAF7F2;margin:0;padding:48px;line-height:1.7}
+  h1{font-family:'Playfair Display',serif;font-weight:400;font-size:2.5rem;letter-spacing:0.05em;margin:0 0 8px}
+  .sub{color:#D4A574;letter-spacing:0.3em;font-size:0.75rem;margin-bottom:48px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:32px;max-width:1400px}
+  .card{background:#2C1810;border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
+  .card .preview{aspect-ratio:16/10;background:#3E2723;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:3rem;color:#D4A574;letter-spacing:0.1em;position:relative;overflow:hidden}
+  .card .preview::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.4))}
+  .a .preview{background:url('images/hero.jpg') center/cover}
+  .b .preview{background:linear-gradient(135deg,#1a1410,#3E2723),url('images/roast.jpg') center/cover;background-blend-mode:multiply}
+  .c .preview{background:#FAF7F2;color:#3E2723;font-family:'Noto Serif JP',serif}
+  .badge{position:absolute;top:16px;left:16px;background:#D4A574;color:#3E2723;padding:4px 12px;border-radius:2px;font-size:0.7rem;letter-spacing:0.2em;font-weight:700;font-family:-apple-system,sans-serif;z-index:2}
+  .body{padding:24px 28px 28px}
+  .title{font-family:'Noto Serif JP',serif;font-size:1.3rem;margin:0 0 8px}
+  .desc{font-size:0.88rem;color:#aaa;margin:0 0 16px}
+  .tag{display:inline-block;font-size:0.72rem;color:#D4A574;letter-spacing:0.15em;border:1px solid rgba(212,165,116,0.4);padding:4px 10px;border-radius:2px;margin-right:6px}
+  .original{margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+  .original a{color:#D4A574;text-decoration:none;font-size:0.9rem;letter-spacing:0.1em}
+  .original a:hover{color:#fff}
+</style>
+</head>
+<body>
+<h1>Café Noir</h1>
+<p class="sub">DESIGN VARIATIONS · 3 DIRECTIONS</p>
+
+<div class="grid">
+  <a href="editorial.html" class="card a">
+    <div class="preview"><span class="badge">A</span></div>
+    <div class="body">
+      <h2 class="title">エディトリアル / 雑誌風</h2>
+      <p class="desc">大胆な非対称レイアウト・産地マーキー・本日の一杯フィーチャー・大型セリフ見出し</p>
+      <span class="tag">ASYMMETRIC</span><span class="tag">SERIF</span><span class="tag">MARQUEE</span>
+    </div>
+  </a>
+
+  <a href="cinematic.html" class="card b">
+    <div class="preview"><span class="badge">B</span></div>
+    <div class="body">
+      <h2 class="title">シネマティック / 没入型</h2>
+      <p class="desc">フルブリード画像・章立て構成・パララックス・暗めムーディー・写真で語る</p>
+      <span class="tag">FULL-BLEED</span><span class="tag">PARALLAX</span><span class="tag">DARK</span>
+    </div>
+  </a>
+
+  <a href="minimal.html" class="card c">
+    <div class="preview"><span class="badge" style="background:#3E2723;color:#FAF7F2">C</span></div>
+    <div class="body">
+      <h2 class="title">ミニマル和モダン</h2>
+      <p class="desc">白基調・縦書き・余白多め・正方形写真・罫線アクセント・静かで上品</p>
+      <span class="tag">MINIMAL</span><span class="tag">VERTICAL</span><span class="tag">JAPANESE</span>
+    </div>
+  </a>
+</div>
+
+<div class="original">
+  <a href="v0.html">← オリジナル版（v0 ベースライン）を見る</a>
+</div>
+
+</body>
+</html>
