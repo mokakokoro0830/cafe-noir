@@ -211,9 +211,71 @@
       <dt>Tel.</dt><dd>03-1234-5678</dd>
       <dt>Access</dt><dd>JR原宿駅 徒歩5分 / 明治神宮前駅 徒歩3分</dd>
     </dl>
-    <a href="#" class="btn">Googleマップで見る →</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E7%A5%9E%E5%AE%AE%E5%89%8D1-2-3" target="_blank" rel="noopener" class="btn">Googleマップで見る →</a>
   </div>
 </section>
+
+<!-- MAP -->
+<section class="map">
+  <div class="map__inner">
+    <iframe
+      src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E7%A5%9E%E5%AE%AE%E5%89%8D1-2-3&hl=ja&z=17&output=embed"
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Café Noir – Map"></iframe>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <span class="chap__no">— Contact</span>
+    <h2 class="gal__title">手紙を、ひとつ。</h2>
+    <p class="contact__lead">取材・卸問い合わせ・カッピング会のお申し込みなど、<br>こちらからお気軽にお寄せください。</p>
+
+    <form class="contact__form" onsubmit="cnFakeSubmit(event)">
+      <div class="contact__row">
+        <label class="contact__field">
+          <span>NAME &nbsp;／&nbsp; お名前</span>
+          <input type="text" name="name" required placeholder="山田 太郎">
+        </label>
+        <label class="contact__field">
+          <span>EMAIL &nbsp;／&nbsp; メールアドレス</span>
+          <input type="email" name="email" required placeholder="your@email.com">
+        </label>
+      </div>
+      <label class="contact__field">
+        <span>SUBJECT &nbsp;／&nbsp; 件名</span>
+        <select name="subject" required>
+          <option value="">選んでください</option>
+          <option>取材・撮影のご依頼</option>
+          <option>卸・OEMのご相談</option>
+          <option>カッピング会・ワークショップ</option>
+          <option>豆の通信販売について</option>
+          <option>その他</option>
+        </select>
+      </label>
+      <label class="contact__field">
+        <span>MESSAGE &nbsp;／&nbsp; お問い合わせ内容</span>
+        <textarea name="message" rows="6" required placeholder="ご自由にお書きください。"></textarea>
+      </label>
+      <p class="contact__note">※ 通常 2〜3 営業日以内にご返信いたします。</p>
+      <button type="submit" class="btn">送信する &nbsp;→</button>
+      <p class="contact__success" id="cnSuccess">
+        — Thank you. お問い合わせを受け付けました。<br>
+        後ほどメールにてご連絡いたします。
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+function cnFakeSubmit(e){
+  e.preventDefault();
+  const f = e.target;
+  f.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+  document.getElementById('cnSuccess').classList.add('is-show');
+}
+</script>
 
 <!-- CREDITS -->
 <footer class="ft">
