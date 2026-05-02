@@ -275,11 +275,19 @@ function cnFakeSubmit(e){
 const MICROCMS_API_KEY = 'auFJ6m605zLL6A9Dqz2Lk2ffT1larFMCia5l';
 const MICROCMS_ENDPOINT = 'https://cafe-noir.microcms.io/api/v1/menu?limit=20';
 
-const menuImages = [
-  'images/menu-drip.jpg',
-  'images/menu-latte.jpg',
-  'images/menu-season.jpg',
-];
+const menuImageMap = {
+  'エスプレッソ':       'images/menu-espresso.jpg',
+  'ドリップコーヒー':   'images/menu-drip.jpg',
+  'カフェラテ':         'images/menu-latte.jpg',
+  'カプチーノ':         'images/menu-cappuccino.jpg',
+  'フラットホワイト':   'images/menu-flatwhite.jpg',
+  'コールドブリュー':   'images/menu-coldbrew.jpg',
+  'シーズナルラテ':     'images/menu-seasonal-latte.jpg',
+  'アフォガート':       'images/menu-affogato.jpg',
+  'クロワッサン':       'images/menu-croissant.jpg',
+  'バナナブレッド':     'images/menu-banana-bread.jpg',
+  'バスクチーズケーキ': 'images/menu-basque-cheesecake.jpg',
+};
 
 fetch(MICROCMS_ENDPOINT, {
   headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY }
@@ -287,9 +295,9 @@ fetch(MICROCMS_ENDPOINT, {
   .then(res => res.json())
   .then(data => {
     const grid = document.getElementById('menu-grid');
-    grid.innerHTML = data.contents.map((item, i) => `
+    grid.innerHTML = data.contents.map((item) => `
       <article class="gc">
-        <figure class="gc__img"><img src="${menuImages[i % menuImages.length]}" alt="${item.name}"></figure>
+        <figure class="gc__img"><img src="${menuImageMap[item.name] || 'images/menu-drip.jpg'}" alt="${item.name}"></figure>
         <div class="gc__b">
           <p class="gc__cat">${item.category}</p>
           <h3>${item.name}</h3>
