@@ -167,16 +167,8 @@
     <span class="chap__no">— Menu</span>
     <h2 class="gal__title">本日のおすすめ。</h2>
   </div>
-  <div class="gal__grid">
-    <article class="gc"><figure class="gc__img"><img src="images/menu-drip.jpg" alt=""></figure>
-      <div class="gc__b"><p class="gc__cat">TAKEAWAY</p><h3>本日のテイクアウト</h3><p class="gc__d">アイスでもホットでも。手を温める、片手の余白。</p><p class="gc__p">¥620</p></div>
-    </article>
-    <article class="gc"><figure class="gc__img"><img src="images/menu-latte.jpg" alt=""></figure>
-      <div class="gc__b"><p class="gc__cat">ESPRESSO</p><h3>ハウスブレンド・エスプレッソ</h3><p class="gc__d">深煎りのコクと余韻。豆そのままを、小さな器に閉じ込めて。</p><p class="gc__p">¥480</p></div>
-    </article>
-    <article class="gc"><figure class="gc__img"><img src="images/menu-season.jpg" alt=""></figure>
-      <div class="gc__b"><p class="gc__cat">PASTRIES</p><h3>自家製クロワッサン</h3><p class="gc__d">毎朝焼き上げる、ヴィエノワズリーの定番。コーヒーのお供に。</p><p class="gc__p">¥420</p></div>
-    </article>
+  <div class="gal__grid" id="menu-grid">
+    <!-- MicroCMS から動的に読み込まれます -->
   </div>
 </section>
 
@@ -275,6 +267,44 @@ function cnFakeSubmit(e){
   f.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
   document.getElementById('cnSuccess').classList.add('is-show');
 }
+</script>
+
+<script>
+// MicroCMS メニュー取得
+// YOUR_API_KEY を自分のAPIキーに置き換えてください
+const MICROCMS_API_KEY = 'auFJ6m605zLL6A9Dqz2Lk2ffT1larFMCia5l';
+const MICROCMS_ENDPOINT = 'https://cafe-noir.microcms.io/api/v1/menu?limit=20';
+
+const menuImages = [
+  'images/menu-drip.jpg',
+  'images/menu-latte.jpg',
+  'images/menu-season.jpg',
+];
+
+fetch(MICROCMS_ENDPOINT, {
+  headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY }
+})
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById('menu-grid');
+    grid.innerHTML = data.contents.map((item, i) => `
+      <article class="gc">
+        <figure class="gc__img"><img src="${menuImages[i % menuImages.length]}" alt="${item.name}"></figure>
+        <div class="gc__b">
+          <p class="gc__cat">${item.category}</p>
+          <h3>${item.name}</h3>
+          <p class="gc__p">¥${item.price}</p>
+        </div>
+      </article>
+    `).join('');
+  })
+  .catch(() => {
+    // API取得失敗時はフォールバック表示
+    document.getElementById('menu-grid').innerHTML = `
+      <article class="gc"><figure class="gc__img"><img src="images/menu-drip.jpg" alt=""></figure>
+        <div class="gc__b"><p class="gc__cat">TAKEAWAY</p><h3>本日のテイクアウト</h3><p class="gc__p">¥620</p></div>
+      </article>`;
+  });
 </script>
 
 <!-- CREDITS -->
